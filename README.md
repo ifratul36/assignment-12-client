@@ -48,8 +48,6 @@ Stay tuned for any updates. Check back frequently for improvements or additions!
 
 ## 🔑 Credentials
 
-- **Admin Username**: `admin@example.com`
-- **Admin Password**: `admin123`
 - **Live Site URL**: [Tourist Guide Website](https://your-live-site-url.com)
 
 ---
