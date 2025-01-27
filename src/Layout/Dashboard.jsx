@@ -4,11 +4,8 @@ import {
   FaCalendar,
   FaEnvelope,
   FaHome,
-  FaList,
-  FaShoppingBag,
   FaShoppingCart,
   FaUsers,
-  FaUtensils,
 } from "react-icons/fa";
 import { FiLayers } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -48,7 +45,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/guide">
+                <NavLink to="/dashboard/candidates">
                   <FaAd className="size-6" />
                   Manage Candidates
                 </NavLink>
@@ -102,7 +99,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/review">
+                <NavLink to="/dashboard/guide">
                   <MdReviews className="size-6" /> Join as tour guide
                 </NavLink>
               </li>

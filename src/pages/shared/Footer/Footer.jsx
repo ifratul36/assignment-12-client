@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="grid grid-flow-col gap-4">
         <motion.p
             animate={{
-              y: ["0px", "15px", "0px"], // Up and down animation effect
+              y: ["0px", "10px", "0px"], // Up and down animation effect
             }}
             transition={{
               duration: 3, // Duration of one cycle
@@ -40,7 +40,7 @@ const Footer = () => {
           </motion.p>
         <motion.p
             animate={{
-              y: ["0px", "-15px", "0px"], // Up and down animation effect
+              y: ["0px", "-12px", "0px"], // Up and down animation effect
             }}
             transition={{
               duration: 3, // Duration of one cycle
@@ -63,7 +63,7 @@ const Footer = () => {
           </motion.p>
         <motion.p
             animate={{
-              y: ["0px", "15px", "0px"], // Up and down animation effect
+              y: ["0px", "13px", "0px"], // Up and down animation effect
             }}
             transition={{
               duration: 3, // Duration of one cycle

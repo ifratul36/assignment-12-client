@@ -22,6 +22,7 @@ import Contact from "../components/Contact/Contact";
 import GuideProfile from "../pages/Dashboard/GuideProfile/GuideProfile";
 import TourPlan from "../components/TourPlan/TourPlan";
 import ManageProfile from "../pages/Dashboard/ManageProfile/ManageProfile";
+import ManageCandidates from "../pages/Dashboard/ManageCandidates/ManageCandidates";
 
   export const router = createBrowserRouter([
     {
@@ -104,6 +105,10 @@ import ManageProfile from "../pages/Dashboard/ManageProfile/ManageProfile";
         {
           path:'package',
           element: <AdminRoute><AddPackage /></AdminRoute>
+        },
+        {
+          path:'candidates',
+          element: <AdminRoute><ManageCandidates /></AdminRoute>
         },
         {
           path:'users',
