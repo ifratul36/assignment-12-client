@@ -36,30 +36,6 @@
 //     return <div>No user profile found or the user has a role assigned.</div>;
 //   }
 
-//   return (
-//     <div className="p-4 flex justify-center items-center">
-//       <div>
-//       <h1 className="text-2xl font-bold mb-4 text-center">My Profile</h1>
-//       <div className="border py-16 p-4 rounded-lg w-96 h-auto shadow-md flex flex-col items-center">
-//         <img
-//           src={user.photoURL || "https://via.placeholder.com/150"}
-//           alt={userData.name}
-//           className="w-52 h-52 rounded mb-2"
-//         />
-//         <h2 className="text-lg font-semibold">{userData.name}</h2>
-//         <p className="text-gray-500">{userData.email}</p>
-//         <p className="mt-2 text-sm">
-//           Role:{" "}
-//           <span className="px-2 py-1 rounded bg-[#27058e37] text-black">
-//             Tourist
-//           </span>
-//         </p>
-//       </div>
-//       </div>
-//     </div>
-//   );
-// };
-
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
