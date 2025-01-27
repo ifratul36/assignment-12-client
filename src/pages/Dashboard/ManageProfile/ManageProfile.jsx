@@ -68,10 +68,7 @@
 // import useAuth from "../../../hooks/useAuth";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-// const ManageProfile = () => {
-//   const { user } = useAuth(); // Get logged-in user from context
-//   const [userData, setUserData] = useState(null);
-//   const [loading, setLoading] = useState(true);
+
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
