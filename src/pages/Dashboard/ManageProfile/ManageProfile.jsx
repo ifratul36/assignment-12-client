@@ -80,10 +80,6 @@
 //     const fetchUser = async () => {
 //       try {
 //         if (user?.email) {
-//           // Fetch all users and filter the logged-in user without a role
-//           const response = await axios.get(`http://localhost:3000/users`);
-//           const filteredUser = response.data.find(
-//             (u) => u.email === user.email && (!u.role || u.role === "No Role")
 
 
 
