@@ -74,10 +74,6 @@
 //   const [loading, setLoading] = useState(true);
 //   const axiosSecure = useAxiosSecure();
 //   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-// //   const [updatedData, setUpdatedData] = useState({ name: "", photoURL: "" });
-
-
-
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
