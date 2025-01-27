@@ -84,27 +84,6 @@
 //           const response = await axios.get(`http://localhost:3000/users`);
 //           const filteredUser = response.data.find(
 //             (u) => u.email === user.email && (!u.role || u.role === "No Role")
-//           );
-//           setUserData(filteredUser);
-//         }
-//       } catch (error) {
-//         console.error("Error fetching user profile:", error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchUser();
-//   }, [user]);
-
-// //   const handleEditClick = () => {
-// //     setUpdatedData({
-// //       name: userData?.name || "",
-// //       photoURL: userData?.photoURL || "",
-// //     });
-// //     setIsEditModalOpen(true);
-// //   };
-//     const handleEditClick = (user) => {
 
 
 
