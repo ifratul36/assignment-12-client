@@ -109,13 +109,6 @@
 //         console.log(res.data);
 //         if (res.data.modifiedCount > 0) {
 //           refetch();
-//           Swal.fire({
-//             position: "top-end",
-//             icon: "success",
-//             title: `${user.name} is an Guide Now!`,
-//             showConfirmButton: false,
-//             timer: 1500,
-//           });
 
 
 
