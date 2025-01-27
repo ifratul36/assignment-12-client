@@ -72,7 +72,6 @@
 //   const { user } = useAuth(); // Get logged-in user from context
 //   const [userData, setUserData] = useState(null);
 //   const [loading, setLoading] = useState(true);
-//   const axiosSecure = useAxiosSecure();
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
