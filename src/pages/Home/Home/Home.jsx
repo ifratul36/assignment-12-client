@@ -3,6 +3,9 @@ import Banner from '../Banner/Banner';
 import { Helmet } from 'react-helmet-async';
 import WebsiteOverview from '../WebsiteOverview/WebsiteOverview';
 import CustomTab from '../Tab/CustomTab';
+import Icon from '../Icon/Icon';
+import Scroll from '../Scroll/Scroll';
+import Featured from '../Featured/Featured';
 
 const Home = () => {
     return (
@@ -12,7 +15,10 @@ const Home = () => {
             </Helmet>
             <Banner />
             <WebsiteOverview /> 
+            <Scroll />
             <CustomTab />
+            <Icon />
+            <Featured />
         </div>
     );
 };

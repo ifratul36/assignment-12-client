@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react"; 
+import React, { useState, useEffect } from "react";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Confetti from "react-confetti";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -31,7 +32,7 @@ const AllTripsPage = () => {
     const fetchGuides = async () => {
       try {
         const response = await axiosSecure.get("/users");
-        const guides = response.data.filter(user => user.role === "guide");
+        const guides = response.data.filter((user) => user.role === "guide");
         setGuides(guides);
       } catch (error) {
         console.error("Error fetching guides:", error);
@@ -42,10 +43,10 @@ const AllTripsPage = () => {
   }, [axiosSecure]);
 
   // Handle guide selection for each tour
-  const handleGuideChange = (tourId, guideId) => {
+  const handleGuideChange = (tourId, guideId, guideName) => {
     setSelectedGuides((prevSelectedGuides) => ({
       ...prevSelectedGuides,
-      [tourId]: guideId,
+      [tourId]: { id: guideId, name: guideName },
     }));
   };
 
@@ -59,7 +60,8 @@ const AllTripsPage = () => {
         trip_title: tour.trip_title,
         photo: tour.photo,
         price: tour.price,
-        guideId: selectedGuide,
+        guideId: selectedGuide.id,
+        guideName: selectedGuide.name,
       };
 
       axiosSecure.post("/carts", cartItem).then((res) => {
@@ -67,11 +69,17 @@ const AllTripsPage = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${tour.trip_title} added to your cart`,
+            title: `${tour.trip_title} added to your cart with guide ${selectedGuide.name}`,
             showConfirmButton: false,
             timer: 1500,
           });
           setBookingCount((prevCount) => prevCount + 1); // Increment booking count
+
+          // Reset the guide selection for this tour after adding to cart
+          setSelectedGuides((prevSelectedGuides) => ({
+            ...prevSelectedGuides,
+            [tour._id]: { id: "", name: "" }, // Reset the selected guide to default
+          }));
         }
       });
     } else {
@@ -105,6 +113,9 @@ const AllTripsPage = () => {
 
   return (
     <div className="relative my-9">
+      <Helmet>
+        <title>Assignment | All Trips Card</title>
+      </Helmet>
       <SectionTitle heading={"All Trips Hunt"} subHeading={"live your life"} />
 
       {/* Back to Home Button */}
@@ -128,10 +139,12 @@ const AllTripsPage = () => {
             <h2 className="text-2xl font-bold text-green-500">
               Congratulations! 🎉
             </h2>
-            <p className="mt-4 text-lg">You have unlocked a special discount!</p>
-            <button className="mt-6 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
-              Apply Discount
-            </button>
+            <p className="mt-4 text-lg">
+              You're one step closer to your next amazing adventure!
+            </p>
+            <p className="mt-2 text-lg font-semibold text-blue-600">
+              Keep exploring, keep booking!
+            </p>
           </div>
         </div>
       )}
@@ -160,27 +173,31 @@ const AllTripsPage = () => {
                 </p>
 
                 {/* Guide Selection */}
-                <div className="mt-4">
-                  <label htmlFor="guide" className="block text-sm font-medium text-gray-700">Select Tour Guide</label>
-                  <select
-                    id="guide"
-                    name="guide"
-                    className="mt-2 block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    value={selectedGuides[item._id] || ""}
-                    onChange={(e) => handleGuideChange(item._id, e.target.value)}
-                  >
-                    <option value="">Select a guide</option>
-                    {guides.map((guide) => (
-                      <option key={guide._id} value={guide._id}>
-                        {guide.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <button
-                  className="mt-4 px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition duration-300"
+                <select
+                  id="guide"
+                  name="guide"
+                  className="mt-2 block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  value={selectedGuides[item._id]?.id || ""} // Resets to empty value after adding to cart
+                  onChange={(e) => {
+                    const selectedGuide = guides.find(
+                      (guide) => guide._id === e.target.value
+                    );
+                    handleGuideChange(
+                      item._id,
+                      selectedGuide?._id,
+                      selectedGuide?.name
+                    );
+                  }}
                 >
+                  <option value="">Select a guide</option>
+                  {guides.map((guide) => (
+                    <option key={guide._id} value={guide._id}>
+                      {guide.name}
+                    </option>
+                  ))}
+                </select>
+
+                <button className="mt-4 px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition duration-300">
                   View Details
                 </button>
                 <button
@@ -199,4 +216,3 @@ const AllTripsPage = () => {
 };
 
 export default AllTripsPage;
-

@@ -2,22 +2,22 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-// import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import axios from "axios";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const AddPackage = () => {
   const { register, handleSubmit ,reset} = useForm();
-  // const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const onSubmit = async (data) => {
     console.log(data);
     // image upload to imgbb and then get an url
-    const photoFile = {image: data.photo[0]}
-    const res= await axios.post(image_hosting_api, photoFile,{
+    const photoFile = {photo: data.photo[0]}
+    const res= await axiosPublic.post(image_hosting_api, photoFile,{
       headers: {
         'content-type': 'multipart/form-data'
       }
@@ -27,9 +27,9 @@ const AddPackage = () => {
         trip_title: data.trip_title,
         tour_type: data.tour_type,
         price: parseFloat(data.price),
-        image: res.data.data.display_url
+        photo: res.data.data.display_url
       }
-      const tourRes = await axiosSecure.post('/tour', tourItem);
+      const tourRes = await axiosSecure.post('/tours', tourItem);
       console.log(tourRes.data);
       if(tourRes.data.insertedId){
         // show success popup

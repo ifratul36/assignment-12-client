@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
@@ -45,7 +46,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="text-white navbar md:max-w-screen-xl mx-auto fixed z-10 bg-opacity-30 bg-black">
+    <div className="text-[#fff] navbar md:max-w-screen-xl mx-auto fixed z-50 bg-opacity-80 bg-[#172554]">
       <div className="navbar-start">
         <div className="dropdown text-neutral-900">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,47 +72,72 @@ const Navbar = () => {
             {navOptions}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold">Tour<span className="text-blue-950"> & Trip</span></a>
+       <Link to="/">
+       <a className="btn btn-ghost text-xl font-bold">
+          <motion.p
+            animate={{
+              y: ["0px", "-8px", "0px"], // Up and down animation effect
+            }}
+            transition={{
+              duration: 3, // Duration of one cycle
+              repeat: Infinity, // Infinite loop
+              repeatType: "loop", // Loop it forever
+              ease: "easeInOut", // Smooth easing
+            }}
+          >
+            <span> Tour</span>
+          </motion.p>
+          <motion.p
+            animate={{
+              y: ["0px", "7px", "0px"], // Up and down animation effect
+            }}
+            transition={{
+              duration: 3, // Duration of one cycle
+              repeat: Infinity, // Infinite loop
+              repeatType: "loop", // Loop it forever
+              ease: "easeInOut", // Smooth easing
+            }}
+          >
+            <span className="text-teal-400"> & Trip</span>
+          </motion.p>
+        </a>
+       </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navOptions}</ul>
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
-         
           {user && (
-          <div className="flex items-center space-x-4">
-            
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="User Avatar"
-                    src={user.photoURL || "https://via.placeholder.com/150"}
-                  />
+            <div className="flex items-center space-x-4">
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt="User Avatar"
+                      src={user.photoURL || "https://via.placeholder.com/150"}
+                    />
+                  </div>
                 </div>
-              </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 text-neutral-900 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-              >
-                <li><Link to="/dashboard">Dashboard</Link></li>
-                <ul className=" rounded py-2 pl-6">
-                <li>
-                {user.displayName || "Anonymous"}
-                </li>
-                <li>
-                {user.email || "No Email"}
-                </li>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 text-neutral-900 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                  <ul className=" rounded py-2 pl-6">
+                    <li>{user.displayName || "Anonymous"}</li>
+                    <li>{user.email || "No Email"}</li>
+                  </ul>
                 </ul>
-              </ul>
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import Contact from "../components/Contact/Contact";
 import GuideProfile from "../pages/Dashboard/GuideProfile/GuideProfile";
 import TourPlan from "../components/TourPlan/TourPlan";
+import ManageProfile from "../pages/Dashboard/ManageProfile/ManageProfile";
 
   export const router = createBrowserRouter([
     {
@@ -84,6 +85,10 @@ import TourPlan from "../components/TourPlan/TourPlan";
           element: <ManageStories />
         },
         {
+          path:'profile',
+          element: <ManageProfile />
+        },
+        {
           path:'guide',
           element: <JoinTourGuide />
         },
@@ -98,7 +103,7 @@ import TourPlan from "../components/TourPlan/TourPlan";
         // admin 
         {
           path:'package',
-          element: <AddPackage />
+          element: <AdminRoute><AddPackage /></AdminRoute>
         },
         {
           path:'users',

@@ -1,133 +1,154 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const GuideProfile = () => {
-  const { user } = useAuth();
-  console.log(user);
-  const [guide, setGuide] = useState(null);
-  console.log(guide);
-  const [isEditing, setIsEditing] = useState(false);
-  const [updatedInfo, setUpdatedInfo] = useState({});
+  const { user } = useAuth(); // Get logged-in user from context
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [updatedData, setUpdatedData] = useState({ name: "", photoURL: "" });
 
-  // Fetch logged-in guide's information
   useEffect(() => {
-    const fetchGuideInfo = async () => {
+    const fetchUser = async () => {
       try {
-        if (user && user.email && user.role === "guide") { // Check if user is a guide
-          const token = localStorage.getItem("accessToken"); // Get the token
-          console.log(token);
-          const response = await axios.get(`/users/${user?.email}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-
-          if (response.data) {
-            setGuide(response.data);
-            setUpdatedInfo({
-              name: response.data.name,
-              image: response.data.image,
-            });
-          }
-        } else {
-          console.log("User is not a guide.");
+        if (user?.email) {
+          // Fetch the user from the backend
+          const response = await axios.get(`http://localhost:3000/users`);
+          const filteredUser = response.data.find(
+            (u) => u.email === user.email && (!u.role || u.role === "guide")
+          );
+          setUserData(filteredUser); // Set userData
         }
       } catch (error) {
-        console.error("Error fetching guide info:", error);
+        console.error("Error fetching user profile:", error);
+      } finally {
+        setLoading(false); // Stop loading
       }
     };
 
-    fetchGuideInfo();
-  }, [user]); // Run this effect whenever the `user` changes
+    fetchUser();
+  }, [user]); // Fetch data when user changes
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUpdatedInfo({ ...updatedInfo, [name]: value });
+  const handleEditClick = () => {
+    if (userData) {
+      // Pre-fill the modal with the current data
+      setUpdatedData({
+        name: userData.name || "",
+        photoURL: userData.photoURL || "",
+      });
+    }
+    setIsEditModalOpen(true); // Open the modal
   };
 
-  const handleSaveChanges = async () => {
+  const handleSave = async () => {
     try {
-      const token = localStorage.getItem("accessToken");
-      const response = await axios.patch(
-        `/users/${guide._id}`,
-        updatedInfo,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // Send the updated data to the backend
+      const response = await axiosSecure.patch(`/users/${userData._id}`, updatedData);
+
       if (response.data.modifiedCount > 0) {
-        setGuide({ ...guide, ...updatedInfo });
-        setIsEditing(false);
+        // Update local state with the updated data
+        setUserData((prevData) => ({
+          ...prevData,
+          name: updatedData.name,
+          photoURL: updatedData.photoURL,
+        }));
+        setIsEditModalOpen(false); // Close the modal
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${updatedData.name} updated successfully!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
-      console.error("Error updating guide info:", error);
+      console.error("Error updating user profile:", error);
     }
   };
 
-  if (!guide) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  return (
-    <div className="p-5 max-w-lg mx-auto bg-white shadow rounded">
-      <h2 className="text-2xl font-bold mb-4">Welcome, {guide.name}</h2>
-      <div className="flex flex-col items-center mb-4">
-        <img
-          src={guide.image || "https://via.placeholder.com/150"}
-          alt={guide.name}
-          className="w-32 h-32 rounded-full mb-2"
-        />
-        <p className="text-lg">Email: {guide.email}</p>
-        <p className="text-lg">Role: {guide.role}</p>
-      </div>
-      {guide.role === "guide" && (
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-          onClick={() => setIsEditing(true)}
-        >
-          Edit Profile
-        </button>
-      )}
+  if (!userData) {
+    return <div>No user profile found or the user has a role assigned.</div>;
+  }
 
-      {isEditing && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full">
-            <h3 className="text-xl font-bold mb-4">Edit Profile</h3>
+  return (
+    <div className="p-4 flex justify-center items-center">
+      <div>
+        <h1 className="text-2xl font-bold mb-4 text-center">Welcome, {userData.name}!</h1>
+        <div className="border py-16 p-4 rounded-lg w-96 h-auto shadow-md flex flex-col items-center">
+          <img
+            src={user.photoURL || "https://via.placeholder.com/150"}
+            alt={userData.name}
+            className="w-52 h-52 rounded mb-2"
+          />
+          <h2 className="text-lg font-semibold">{userData.name}</h2>
+          <p className="text-gray-500">{user.email}</p>
+          <p className="mt-2 text-sm">
+            Role:{" "}
+            <span className="px-2 py-1 rounded bg-[#27058e37] text-black">
+              {userData.role || "Tourist"}
+            </span>
+          </p>
+          <div className="mt-4 flex space-x-4">
+            <button
+              onClick={handleEditClick}
+              className="bg-blue-500 text-white py-2 px-4 rounded"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => alert("Tour Guide application link")}
+              className="bg-green-500 text-white py-2 px-4 rounded"
+            >
+              Apply as Tour Guide
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isEditModalOpen && (
+        <div className="modal bg-gray-500 bg-opacity-50 fixed inset-0 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Edit Profile</h2>
             <div className="mb-4">
-              <label className="block text-gray-700">Name</label>
+              <label className="block text-sm">Name:</label>
               <input
                 type="text"
-                name="name"
-                value={updatedInfo.name}
-                onChange={handleInputChange}
-                className="w-full p-2 border rounded"
+                value={updatedData.name}
+                onChange={(e) => setUpdatedData({ ...updatedData, name: e.target.value })}
+                className="border rounded px-4 py-2 w-full"
               />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700">Image URL</label>
+              <label className="block text-sm">Photo URL:</label>
               <input
                 type="text"
-                name="image"
-                value={updatedInfo.image}
-                onChange={handleInputChange}
-                className="w-full p-2 border rounded"
+                value={updatedData.photoURL}
+                onChange={(e) => setUpdatedData({ ...updatedData, photoURL: e.target.value })}
+                className="border rounded px-4 py-2 w-full"
               />
             </div>
-            <button
-              className="bg-green-500 text-white px-4 py-2 rounded mr-2"
-              onClick={handleSaveChanges}
-            >
-              Save Changes
-            </button>
-            <button
-              className="bg-red-500 text-white px-4 py-2 rounded"
-              onClick={() => setIsEditing(false)}
-            >
-              Cancel
-            </button>
+            <div className="flex justify-between">
+              <button
+                onClick={handleSave}
+                className="bg-blue-500 text-white py-2 px-4 rounded"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => setIsEditModalOpen(false)}
+                className="bg-red-500 text-white py-2 px-4 rounded"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}
