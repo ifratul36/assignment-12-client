@@ -76,10 +76,6 @@
 //   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 // //   const [updatedData, setUpdatedData] = useState({ name: "", photoURL: "" });
 
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       try {
-//         if (user?.email) {
 
 
 
