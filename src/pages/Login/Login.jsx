@@ -109,7 +109,7 @@ const Login = () => {
             </div>
             <div className="form-control mt-4">
               {/* TODO: apply disabled for re captcha disabled in here the login button  */}
-              <button disabled={true} className="btn btn-primary">
+              <button disabled={disabled} className="btn btn-primary">
                 Login
               </button>
             </div>
