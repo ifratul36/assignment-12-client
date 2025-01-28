@@ -8,9 +8,13 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        // Reload the page after successful logout
+        window.location.reload();
+      })
       .catch((error) => console.log(error));
   };
+  
 
   const navOptions = (
     <>
