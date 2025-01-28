@@ -73,8 +73,8 @@ const Navbar = () => {
           </ul>
         </div>
        <Link to="/">
-       <a className="btn btn-ghost text-xl font-bold">
-          <motion.p
+       <div className="btn btn-ghost text-xl font-bold flex-col">
+          <motion.div
             animate={{
               y: ["0px", "-8px", "0px"], // Up and down animation effect
             }}
@@ -86,8 +86,8 @@ const Navbar = () => {
             }}
           >
             <span> Tour</span>
-          </motion.p>
-          <motion.p
+          </motion.div>
+          <motion.div
             animate={{
               y: ["0px", "7px", "0px"], // Up and down animation effect
             }}
@@ -99,8 +99,8 @@ const Navbar = () => {
             }}
           >
             <span className="text-teal-400"> & Trip</span>
-          </motion.p>
-        </a>
+          </motion.div>
+        </div>
        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

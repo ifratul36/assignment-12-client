@@ -54,7 +54,7 @@ const Featured = () => {
               </p>
             </div>
             <div>
-                <motion.p
+                <motion.div
                     animate={{
                         y: ["0px", "-15px", "0px"],  // Up and down animation effect
                     }}
@@ -66,7 +66,7 @@ const Featured = () => {
                     }}
                 >
                     <p className="md:border-b-2 md:border-r-2 md:border-white md:shadow-xl hover:bg-white hover:text-neutral-900 "><button className="border-white border-2 px-8 py-2 mb-1 mr-1 font-bold text-lg uppercase">contact</button></p>
-                </motion.p>
+                </motion.div>
             </div>
         </div>
       </div>

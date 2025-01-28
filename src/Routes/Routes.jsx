@@ -23,6 +23,15 @@ import GuideProfile from "../pages/Dashboard/GuideProfile/GuideProfile";
 import TourPlan from "../components/TourPlan/TourPlan";
 import ManageProfile from "../pages/Dashboard/ManageProfile/ManageProfile";
 import ManageCandidates from "../pages/Dashboard/ManageCandidates/ManageCandidates";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
+import MyAssignedTours from "../pages/Dashboard/MyAssignedTours/MyAssignedTours";
+import AddStory from "../pages/Dashboard/AddStory/AddStory";
+import GuideStory from "../pages/Dashboard/GuideStory/GuideStory";
+import ManageGuideStory from "../pages/Dashboard/ManageGuideStory/ManageGuideStory";
+import Community from "../pages/DetailsPage/Community/Community";
+import AllStory from "../pages/AllStory/AllStory";
+import ErrorPage from "../Layout/ErrorPage";
 
   export const router = createBrowserRouter([
     {
@@ -52,6 +61,10 @@ import ManageCandidates from "../pages/Dashboard/ManageCandidates/ManageCandidat
       element: <AboutMe />,
     },
     {
+      path: "/allStory",
+      element: <AllStory />,
+    },
+    {
       path: "/trip",
       element: <PrivateRoute><AllTripsPage /></PrivateRoute>,
     },
@@ -66,6 +79,10 @@ import ManageCandidates from "../pages/Dashboard/ManageCandidates/ManageCandidat
         {
           path: 'plan',
           element: <TourPlan />
+        },
+        {
+          path: 'unity',
+          element: <Community />
         },
       ]
     },
@@ -86,6 +103,10 @@ import ManageCandidates from "../pages/Dashboard/ManageCandidates/ManageCandidat
           element: <ManageStories />
         },
         {
+          path:'addStory',
+          element: <AddStory />
+        },
+        {
           path:'profile',
           element: <ManageProfile />
         },
@@ -93,18 +114,35 @@ import ManageCandidates from "../pages/Dashboard/ManageCandidates/ManageCandidat
           path:'guide',
           element: <JoinTourGuide />
         },
+        {
+          path:'payment',
+          element:<Payment />
+        },
         // guide
-
-
         {
           path:'profileGuide',
           element: <GuideProfile />
         },
-
+        {
+          path:'guideStory',
+          element: <GuideStory />
+        },
+        {
+          path:'manageGuideStory',
+          element: <ManageGuideStory />
+        },
+        {
+          path:'assigned',
+          element: <MyAssignedTours />
+        },
         // admin 
         {
           path:'package',
           element: <AdminRoute><AddPackage /></AdminRoute>
+        },
+        {
+          path:'adminProflie',
+          element: <AdminRoute><AdminProfile /></AdminRoute>
         },
         {
           path:'candidates',
@@ -117,6 +155,10 @@ import ManageCandidates from "../pages/Dashboard/ManageCandidates/ManageCandidat
         // shared list
         
       ]
+    },
+    {
+      path:'*',
+      element:<ErrorPage />
     }
   ]);
 

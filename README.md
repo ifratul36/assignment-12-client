@@ -48,7 +48,7 @@ Stay tuned for any updates. Check back frequently for improvements or additions!
 
 ## 🔑 Credentials
 
-- **Live Site URL**: [Tourist Guide Website](https://your-live-site-url.com)
+- **Live Site URL**: [Tourist Guide Website](https://assignment-last-bed4c.web.app)
 
 ---
 

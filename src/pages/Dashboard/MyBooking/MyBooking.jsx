@@ -66,11 +66,9 @@ const MyBooking = () => {
                   <td>{booking.guideName || "N/A"}</td>
                   <td>${booking.price || "N/A"}</td>
                   <td>
-                    {booking.status === "Pending" && (
-                      <button className="btn btn-primary btn-sm mr-2">
+                  <button className="btn bg-blue-950 text-[#fff] btn-sm mr-2">
                         Pay
                       </button>
-                    )}
                   </td>
                 </tr>
               ))

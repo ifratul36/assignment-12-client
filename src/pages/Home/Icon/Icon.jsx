@@ -15,7 +15,7 @@ const Icon = () => {
       />
       <div className="md:flex justify-center items-center gap-6 p-8 py-6">
         <div className="text-start">
-          <motion.p
+          <motion.div
             animate={{
               y: ["0px", "15px", "0px"], // Up and down animation effect
             }}
@@ -27,7 +27,7 @@ const Icon = () => {
             }}
           >
             <img src={umbre} className="w-40 h-40" alt="" />
-          </motion.p>
+          </motion.div>
 
           <h2 className="text-xl font-semibold hover:text-red-600 py-2">
             Discover the possibilities
@@ -38,7 +38,7 @@ const Icon = () => {
           </p>
         </div>
         <div className="text-start">
-          <motion.p
+          <motion.div
             animate={{
               y: ["0px", "-15px", "0px"], // Up and down animation effect
             }}
@@ -50,7 +50,7 @@ const Icon = () => {
             }}
           >
             <img src={card} className="w-40 h-40" alt="" />
-          </motion.p>
+          </motion.div>
 
           <h2 className="text-xl font-semibold hover:text-red-600 py-4">
             Enjoy deals & delights
@@ -60,7 +60,7 @@ const Icon = () => {
           </p>
         </div>
         <div className="text-start">
-          <motion.p
+          <motion.div
             animate={{
               y: ["0px", "15px", "0px"], // Up and down animation effect
             }}
@@ -72,7 +72,7 @@ const Icon = () => {
             }}
           >
             <img src={earth} className="w-40 h-40" alt="" />
-          </motion.p>
+          </motion.div>
 
           <h2 className="text-xl font-semibold hover:text-red-600 py-4">
             Exploring made easyt
@@ -83,7 +83,7 @@ const Icon = () => {
           </p>
         </div>
         <div className="text-start">
-          <motion.p
+          <motion.div
             animate={{
               y: ["0px", "-15px", "0px"], // Up and down animation effect
             }}
@@ -95,7 +95,7 @@ const Icon = () => {
             }}
           >
             <img src={award} className="w-40 h-40" alt="" />
-          </motion.p>
+          </motion.div>
           <h2 className="text-xl font-semibold hover:text-red-600 py-4">
             Travel you can trust
           </h2>

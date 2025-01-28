@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Guide = () => {
+const Community = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Guide = () => {
     );
 };
 
-export default Guide;
+export default Community;

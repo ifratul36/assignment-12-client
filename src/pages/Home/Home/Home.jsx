@@ -6,6 +6,7 @@ import CustomTab from '../Tab/CustomTab';
 import Icon from '../Icon/Icon';
 import Scroll from '../Scroll/Scroll';
 import Featured from '../Featured/Featured';
+import ManageRandomStories from '../../ManageRandomStories/ManageRandomStories';
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
             <CustomTab />
             <Icon />
             <Featured />
+            <ManageRandomStories />
         </div>
     );
 };

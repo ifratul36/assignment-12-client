@@ -8,7 +8,7 @@ const MeetTourGuide = () => {
     useEffect(() => {
         const fetchGuides = async () => {
             try {
-                const response = await fetch('http://localhost:3000/users'); // Replace with your API URL
+                const response = await fetch('https://assignment-12-server-jet-six.vercel.app/users'); // Replace with your API URL
                 const data = await response.json();
 
                 

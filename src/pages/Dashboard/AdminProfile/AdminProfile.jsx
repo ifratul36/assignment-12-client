@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
 
-const GuideProfile = () => {
+
+const AdminProfile = () => {
   const { user } = useAuth(); // Get logged-in user from context
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,8 +19,9 @@ const GuideProfile = () => {
           // Fetch the user from the backend using axiosSecure
           const response = await axiosSecure.get(`/users`);
           const filteredUser = response.data.find(
-            (u) => u.email === user.email && (!u.role || u.role === "guide")
+            (u) => u.email === user.email && u.role === "admin"
           );
+          
           setUserData(filteredUser); // Set userData
         }
       } catch (error) {
@@ -30,7 +32,7 @@ const GuideProfile = () => {
     };
 
     fetchUser();
-  }, [user, axiosSecure]); // Fetch data when user changes
+  }, [user]); // Fetch data when user changes
 
   const handleEditClick = () => {
     if (userData) {
@@ -74,7 +76,7 @@ const GuideProfile = () => {
   }
 
   if (!userData) {
-    return <div>No user profile found or the user has a role assigned.</div>;
+    return <div>No user profile found or not an admin.</div>;
   }
 
   return (
@@ -149,4 +151,5 @@ const GuideProfile = () => {
   );
 };
 
-export default GuideProfile;
+export default AdminProfile;
+

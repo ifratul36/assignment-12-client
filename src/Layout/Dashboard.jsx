@@ -34,7 +34,7 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li className="uppercase">
-                <NavLink to="/dashboard/adminHome">
+                <NavLink to="/dashboard/adminProflie">
                   <CgProfile className="size-6" /> Manage Profile
                 </NavLink>
               </li>
@@ -66,17 +66,17 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/assignedTours">
+                <NavLink to="/dashboard/assigned">
                   <FaCalendar className="size-6" /> My Assigned Tours
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/addStories">
+                <NavLink to="/dashboard/guideStory">
                   <FaShoppingCart className="size-6" /> Add Stories
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/manageStories">
+                <NavLink to="/dashboard/manageGuideStory">
                   <MdReviews className="size-6" /> Manage Stories
                 </NavLink>
               </li>
@@ -89,12 +89,12 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/reservation">
+                <NavLink to="/dashboard/story">
                   <FaCalendar className="size-6" /> Manage Stories
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/cart">
+                <NavLink to="/dashboard/addStory">
                   <FaShoppingCart className="size-6" /> Add Stories
                 </NavLink>
               </li>

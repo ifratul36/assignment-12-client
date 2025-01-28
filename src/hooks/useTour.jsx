@@ -7,7 +7,7 @@
 //     const [loading, setLoading] = useState(true);
 
 //     useEffect(() => {
-//         fetch('http://localhost:3000/tour')
+//         fetch('https://assignment-12-server-jet-six.vercel.app/tour')
 //             .then((res) => res.json())
 //             .then((data) => {
 //                 // Shuffle the data

@@ -5,6 +5,7 @@ import BookingForm from '../pages/DetailsPage/BookingForm/BookingForm';
 import Gallery from '../pages/DetailsPage/Gallery/Gallery';
 import AboutTour from '../pages/DetailsPage/AboutTour/AboutTour';
 import TourPlan from '../components/TourPlan/TourPlan';
+import Community from '../pages/DetailsPage/Community/Community';
 
 
 const DetailsPage = () => {
