@@ -27,21 +27,6 @@
 //     localStorage.setItem('theme', newTheme);
 //   };
 
-//   const navOptions = (
-//     <>
-//       <li className="hover:text-primary"><Link to="/">Home</Link></li>
-//       <li className="hover:text-primary"><Link to="/details">Package Details</Link></li>
-//       <li className="hover:text-primary"><Link to="/trip">All Trips</Link></li>
-//       <li className="hover:text-primary"><Link to="/about">About</Link></li>
-//       <li>
-//         {user ? (
-//           <button className="hover:text-primary" onClick={handleLogOut}>Log Out</button>
-//         ) : (
-//           <Link to="/login" className="hover:text-primary">Log in</Link>
-//         )}
-//       </li>
-//     </>
-//   );
 
 //   return (
 //     <div className={`navbar fixed z-50 w-full px-6 py-4 transition-all duration-300 ${theme === 'dark' ? 'bg-[#1c232b] text-white' : 'bg-[#eedede95] text-black'}`}>
