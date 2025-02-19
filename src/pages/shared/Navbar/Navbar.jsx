@@ -1,19 +1,3 @@
-
-//         )}
-
-//         {/* Theme Toggle Button (Without Checkbox) */}
-//         <button onClick={toggleTheme} className="text-3xl">
-//           {theme === 'dark' ? <FaSun className="text-yellow-500" /> : <FaMoon className="text-gray-800" />}
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
-
-
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
