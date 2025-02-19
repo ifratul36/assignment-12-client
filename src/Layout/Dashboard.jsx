@@ -28,8 +28,9 @@ const Dashboard = () => {
        <Helmet>
               <title>Assignment | Dashboard</title>
             </Helmet>
+            
       {/* dashboard side bar */}
-      <div className="w-64 min-h-screen bg-blue-950 text-white">
+      <div className="w-64 min-h-screen bg-teal-700 text-white">
         <ul className="menu gap-2">
           {isAdmin ? (
             <>

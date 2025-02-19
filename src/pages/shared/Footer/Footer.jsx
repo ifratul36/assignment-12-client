@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-blue-950 text-primary-content p-10">
+    <footer className="footer footer-center bg-blue-950 text-primary-content p-10" >
       <aside>
         
-        <p className="font-bold">
+        <p className="font-bold text-2xl">
           TOUR & TRIP
-          <br />
-          Providing reliable tech since 1992
         </p>
+        <p>
+        Providing reliable tech since 1992</p>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
       <nav>

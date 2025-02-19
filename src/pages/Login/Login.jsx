@@ -49,8 +49,6 @@ const Login = () => {
       });
   };
 
-  
-
   const handleValidateCaptcha = (e) => {
     const user_captcha_value = e.target.value;
     console.log(user_captcha_value);
@@ -58,6 +56,8 @@ const Login = () => {
       setDisabled(false);
     }
   };
+
+
   return (
     <>
       <Helmet>

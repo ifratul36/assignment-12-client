@@ -26,7 +26,7 @@ const Icon = () => {
               ease: "easeInOut", // Smooth easing
             }}
           >
-            <img src={umbre} className="w-40 h-40" alt="" />
+            <img src={umbre} className="w-40 h-40 rounded-full" alt="" />
           </motion.div>
 
           <h2 className="text-xl font-semibold hover:text-red-600 py-2">
@@ -49,7 +49,7 @@ const Icon = () => {
               ease: "easeInOut", // Smooth easing
             }}
           >
-            <img src={card} className="w-40 h-40" alt="" />
+            <img src={card} className="w-40 h-40 rounded-full" alt="" />
           </motion.div>
 
           <h2 className="text-xl font-semibold hover:text-red-600 py-4">
@@ -71,7 +71,7 @@ const Icon = () => {
               ease: "easeInOut", // Smooth easing
             }}
           >
-            <img src={earth} className="w-40 h-40" alt="" />
+            <img src={earth} className="w-40 h-40 rounded-full" alt="" />
           </motion.div>
 
           <h2 className="text-xl font-semibold hover:text-red-600 py-4">
@@ -94,7 +94,7 @@ const Icon = () => {
               ease: "easeInOut", // Smooth easing
             }}
           >
-            <img src={award} className="w-40 h-40" alt="" />
+            <img src={award} className="w-40 h-40 rounded-full" alt="" />
           </motion.div>
           <h2 className="text-xl font-semibold hover:text-red-600 py-4">
             Travel you can trust

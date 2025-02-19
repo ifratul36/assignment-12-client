@@ -93,7 +93,7 @@ const ManageUsers = () => {
     <>
       <SectionTitle heading={"MANAGE ALL USERS"} subHeading={"---How many??---"} />
       <div className="flex justify-start my-4">
-        <h2 className="text-3xl font-semibold">Total Users: {users.length}</h2>
+        <h2 className="text-3xl font-semibold ml-14">Total Users: {users.length}</h2>
       </div>
       <div className="overflow-x-auto ml-8 p-2">
         <table className="table">

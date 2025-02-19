@@ -3,7 +3,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const WebsiteOverview = () => {
   return (
-    <section className="bg-gray-100 py-12 px-6 md:px-16">
+    <section className=" py-12 px-6 md:px-16">
       <div className="max-w-7xl mx-auto text-center">
         <SectionTitle heading={'To Our website'} subHeading={'welcome'} />
         <p className="text-gray-600 text-lg mb-8">
