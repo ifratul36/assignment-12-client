@@ -20,14 +20,7 @@
 //     document.documentElement.setAttribute('data-theme', storedTheme);
 //   }, []);
 
-//   const toggleTheme = () => {
-//     const newTheme = theme === 'light' ? 'dark' : 'light';
-//     setTheme(newTheme);
-//     document.documentElement.setAttribute('data-theme', newTheme);
-//     localStorage.setItem('theme', newTheme);
-//           <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-//             {navOptions}
-//           </ul>
+
 //         </div>
 //         <Link to="/">
 //           <div className="btn btn-ghost md:text-2xl text-2xl font-bold flex-col">
