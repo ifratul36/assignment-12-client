@@ -14,13 +14,6 @@
 //       .catch((error) => console.log(error));
 //   };
 
-//   useEffect(() => {
-//     const storedTheme = localStorage.getItem('theme') || 'light';
-//     setTheme(storedTheme);
-//     document.documentElement.setAttribute('data-theme', storedTheme);
-//   }, []);
-
-
 //         </div>
 //         <Link to="/">
 //           <div className="btn btn-ghost md:text-2xl text-2xl font-bold flex-col">
